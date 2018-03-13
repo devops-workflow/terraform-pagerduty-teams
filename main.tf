@@ -6,6 +6,14 @@ module "enabled" {
   value   = "${var.enabled}"
 }
 
+data "null_data_source" "this" {
+  count = "${module.enabled.value ? length(var.teams) : 0}"
+
+  inputs {
+    name = "${lookup(var.teams[count.index], "name")}"
+  }
+}
+
 resource "pagerduty_team" "this" {
   count       = "${module.enabled.value ? length(var.teams) : 0}"
   name        = "${lookup(var.teams[count.index], "name")}"
