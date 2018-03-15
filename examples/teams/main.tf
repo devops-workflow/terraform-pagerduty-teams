@@ -1,5 +1,5 @@
 module "teams" {
-  source          = "../"
+  source          = "../../"
   pagerduty_token = "${var.pagerduty_token}"
 
   teams = [
