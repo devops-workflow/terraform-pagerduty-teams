@@ -10,7 +10,6 @@ This only creates and deletes the team. Not anything associated with the team.
 
 ```hcl
 module "teams" {
-  source          = "../../"
   source          = "devops-workflow/teams/pagerduty"
   version         = "0.0.1"
   pagerduty_token = "${var.pagerduty_token}"
